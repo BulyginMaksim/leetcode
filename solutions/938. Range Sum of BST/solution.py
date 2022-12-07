@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 
 # Definition for a binary tree node.
@@ -11,18 +11,17 @@ class TreeNode:
 
 class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
-        if root is None:
-            return 0
-        return self.dfs(root, low, high)
 
-    def dfs(self, node: TreeNode, low: int, high: int):
-        if node.left is None and node.right is None:
-            if low <= node.val <= high:
-                return node.val
-            return 0
-        cur_sum = node.val if low <= node.val <= high else 0
-        if node.left is not None:
-            cur_sum += self.dfs(node.left, low, high)
-        if node.right is not None:
-            cur_sum += self.dfs(node.right, low, high)
-        return cur_sum
+        def dfs(root: Optional[TreeNode], result: List[int]) -> None:
+            if root is None:
+                return
+            if low <= root.val <= high:
+                result[0] += root.val
+            if low <= root.val:
+                dfs(root.left, result)
+            if root.val <= high:
+                dfs(root.right, result)
+
+        result = [0]
+        dfs(root, result)
+        return result[0]
