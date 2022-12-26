@@ -1,3 +1,6 @@
-# Leetcode solutions
+# LeetCode solutions
 
-This repository contains my leetcode problems solutions. Currently `python` only.
+This repository contains my LeetCode problems solutions. 
+Currently `python` only.
+
+My LeetCode profile [mbulygin](https://leetcode.com/mbulygin).
