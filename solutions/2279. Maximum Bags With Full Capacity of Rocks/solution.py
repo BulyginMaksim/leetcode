@@ -12,4 +12,3 @@ class Solution:
             number_filled_bags += 1
             idx += 1
         return number_filled_bags
-
