@@ -12,12 +12,14 @@ class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         if head is None:
             return None
-        result = ListNode()
+        if head.next is None:
+            return head
+        current_head = head
+        head = head.next
+        current_head.next = None
         while head is not None:
-            result.val = head.val
-            if head.next is not None:
-                new_head = ListNode()
-                new_head.next = result
-                result = new_head
+            copied_tail = head
             head = head.next
-        return result
+            copied_tail.next = current_head
+            current_head = copied_tail
+        return current_head

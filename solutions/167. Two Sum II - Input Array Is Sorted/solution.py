@@ -6,16 +6,16 @@ class Solution:
         for idx in range(1, len(numbers)):
             cur_number = numbers[idx]
             found_idx = self.bin_search(numbers, idx, target - cur_number)
-            if numbers[found_idx] + numbers[idx] == target:
+            if found_idx != idx and numbers[found_idx] + numbers[idx] == target:
                 return [found_idx + 1, idx + 1]
         return [-1, -1]
 
-    def bin_search(self, numbers: List[int], idx: int, target: int):
-        left, right = -1, idx - 1
-        while left < right - 1:
+    def bin_search(self, numbers: List[int], idx: int, target: int) -> int:
+        left, right = 0, idx
+        while left < right:
             mid = (left + right) // 2
             if numbers[mid] < target:
-                left = mid
+                left = mid + 1
             else:
                 right = mid
-        return right
+        return left
