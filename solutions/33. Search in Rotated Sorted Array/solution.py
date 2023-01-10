@@ -12,10 +12,8 @@ class Solution:
                 else:
                     right = mid
             else:
-                if nums[mid] < target <= nums[right]:
+                if target > nums[mid] and target <= nums[right]:
                     left = mid + 1
                 else:
                     right = mid
-        if left == right and target != nums[left]:
-            return -1
-        return left
+        return left if target == nums[left] else -1
